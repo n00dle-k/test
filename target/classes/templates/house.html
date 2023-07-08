@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{../css/main.css}" rel="stylesheet" />
+</head>
+<body style="height: 100%">
+<div class="hat">
+    <table>
+        <tr>
+            <td>
+                <h1 class="head1">
+                    Test
+                </h1>
+            </td>
+        </tr>
+    </table>
+</div>
+<hr>
+
+
+<div class="menu">
+
+    <h3>МЕНЮ</h3>
+    <br>
+    <hr>
+    <a href="/house/add">ДОБАВИТЬ</a>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <form method="post" action="/doLogout">
+        <button type="submit" class="logbtn">Выйти</button>
+    </form>
+</div>
+
+<div class="center">
+    <div style="margin-top: 50px">
+        <div th:each="house : ${house}" class="product">
+           <h4 th:text="${house.getAddress()}" />
+            <button type="button" class="allbuttons">
+                <a th:href="@{/house/edit/{id}(id=${house.getId()})}" th:text="Детали" />
+            </button>
+            <br>
+            <button type="button" class="allbuttons">
+                <a th:href="@{/house/delete/{id}(id=${house.getId()})}" th:text="Удалить" />
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
